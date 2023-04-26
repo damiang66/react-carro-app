@@ -1,31 +1,24 @@
 
-import { useState } from "react";
-import { CardDetalle } from "./componentes/CardDetalle";
-import { CarroCompra } from "./componentes/CarroCompra";
-const iniciarCarro =[
-    /*
-    {
-      productos:{
 
-      } ,
-      cantidad:0 ,
-      total:0
-    }
-    */
-]
+import { useItemsCard } from "./hooks/useItemsCard";
+import { Navbar } from "./componentes/navbar";
+import { Rutas } from "./componentes/rutas";
+
+
+
+   
+   
+
 
 
 export const CardApp = () => {
-   const[cardItems,setCardItems]=useState(iniciarCarro);
-
+   const{cardItems,handlerAddProductos,eliminar} = useItemsCard();
     return (<>
-
-        <div className="container">
+<Navbar/>
+        <div className="container my-4">
             <h3>Compras-App</h3>
-           <CardDetalle />
-            <div className="my-4 w-50">
-            <CarroCompra items={cardItems} />
-            </div>
+           <Rutas cardItems={cardItems} handlerAddProductos={handlerAddProductos} eliminar={eliminar}/>
+            
             </div>
        
     </>)
