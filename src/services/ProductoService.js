@@ -1,6 +1,8 @@
-import { productos } from "../data/productos"
 
-export const getProductos = ()=>{
+
+export const getProductos = async()=>{
+   const respuesta= await fetch('http://localhost:8080/productos');
+   const productos = await respuesta.json()
     return productos;
 }
 export const CalcularTotal=(items)=>{
